@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  keycloak-db-data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:13.7
+    container_name: postgres
+    volumes:
+      - keycloak-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: my_keycloak
+      POSTGRES_PASSWORD: My863Keycloak
+  keycloak:
+    build: .
+    container_name: custom-auth-service
+    environment:
+      #Admin Credentials
+      KC_HOSTNAME_STRICT: 'false'
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: MyKeycloak493
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: MyKeycloak493
+      PROXY_ADDRESS_FORWARDING: "true"
+      KC_SPI_THEME_DEFAULT: 'my-theme'
+      KC_SPI_THEME_WELCOME_THEME: 'my-theme'
+      KC_SPI_THEME_LOGIN_THEME: 'my-theme'
+    command:
+      - "-v start --optimized
+      "
+    ports:
+      - 8443:8443
+      - 8080:8080
+    depends_on:
+      - postgres
