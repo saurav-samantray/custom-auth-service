@@ -33,8 +33,6 @@ services:
       KC_HOSTNAME: localhost
       PROXY_ADDRESS_FORWARDING: "true"
       KC_SPI_THEME_DEFAULT: 'my-theme'
-      KC_SPI_THEME_WELCOME_THEME: 'my-theme'
-      KC_SPI_THEME_LOGIN_THEME: 'my-theme'
     command:
       - "-v start --optimized
       "
