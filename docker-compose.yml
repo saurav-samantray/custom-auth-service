@@ -25,6 +25,12 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: MyKeycloak493
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: MyKeycloak493
+      KC_DB_URL: 'jdbc:postgresql://postgres/keycloak'
+      KC_DB_USERNAME: my_keycloak
+      KC_DB_PASSWORD: My863Keycloak
+      KC_HEALTH_ENABLED: 'true'
+      KC_METRICS_ENABLED: 'true'
+      KC_HOSTNAME: localhost
       PROXY_ADDRESS_FORWARDING: "true"
       KC_SPI_THEME_DEFAULT: 'my-theme'
       KC_SPI_THEME_WELCOME_THEME: 'my-theme'
